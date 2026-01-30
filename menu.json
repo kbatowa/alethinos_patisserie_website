@@ -1,0 +1,662 @@
+{
+  "brand": "Alethinos",
+  "currency": "FCFA",
+  "categories": [
+    {
+      "id": "cocktails",
+      "name": "Cocktails",
+      "items": [
+        {
+          "id": "menthamilk",
+          "name": "Menthamilk",
+          "desc": "Sirop de menthe, lait",
+          "price": 1500,
+          "tags": [
+            "frais"
+          ],
+          "featured": true
+        },
+        {
+          "id": "authentica-menthe",
+          "name": "Authentica Menthe",
+          "desc": "Sirop de menthe, Sprite",
+          "price": 1500,
+          "tags": [
+            "frais"
+          ],
+          "featured": false
+        },
+        {
+          "id": "gingermilk",
+          "name": "Gingermilk",
+          "desc": "Lait gingembre",
+          "price": 1500,
+          "tags": [
+            "gingembre"
+          ],
+          "featured": false
+        },
+        {
+          "id": "authentica-grenadine",
+          "name": "Authentica Grenadine",
+          "desc": "Sirop de grenadine, Sprite",
+          "price": 2000,
+          "tags": [
+            "fruité"
+          ],
+          "featured": true
+        },
+        {
+          "id": "combo",
+          "name": "Combo",
+          "desc": "Orange, ananas, sirop de grenadine",
+          "price": 2000,
+          "tags": [
+            "tropical"
+          ],
+          "featured": true
+        }
+      ]
+    },
+    {
+      "id": "softs",
+      "name": "Boissons softs",
+      "items": [
+        {
+          "id": "voltic-05",
+          "name": "Eau Voltic (0,5 L)",
+          "price": 300,
+          "tags": [
+            "eau"
+          ],
+          "featured": false
+        },
+        {
+          "id": "voltic-15",
+          "name": "Eau Voltic (1,5 L)",
+          "price": 900,
+          "tags": [
+            "eau"
+          ],
+          "featured": false
+        },
+        {
+          "id": "malta",
+          "name": "Malta",
+          "price": 500,
+          "tags": [
+            "soft"
+          ],
+          "featured": false
+        },
+        {
+          "id": "cocktail-soft",
+          "name": "Cocktail (soft)",
+          "price": 500,
+          "tags": [
+            "soft"
+          ],
+          "featured": false
+        },
+        {
+          "id": "coca-cola",
+          "name": "Coca Cola",
+          "price": 500,
+          "tags": [
+            "soft"
+          ],
+          "featured": false
+        },
+        {
+          "id": "youzou",
+          "name": "Youzou",
+          "price": 500,
+          "tags": [
+            "soft"
+          ],
+          "featured": false
+        },
+        {
+          "id": "beaufort",
+          "name": "Bière Beaufort",
+          "price": 600,
+          "tags": [
+            "bière"
+          ],
+          "featured": false
+        },
+        {
+          "id": "sirop",
+          "name": "Sirop (Grenadine, Menthe)",
+          "price": 500,
+          "tags": [
+            "sirop"
+          ],
+          "featured": false
+        },
+        {
+          "id": "redbull",
+          "name": "Redbull",
+          "price": 1500,
+          "tags": [
+            "énergie"
+          ],
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "petits-fours",
+      "name": "Nos petits fours",
+      "items": [
+        {
+          "id": "samoussa-poisson",
+          "name": "Samoussa poisson",
+          "price": 400,
+          "bulk": "à partir de 50 : 350 FCFA",
+          "tags": [
+            "sale",
+            "bulk"
+          ],
+          "featured": true
+        },
+        {
+          "id": "samoussa-viande",
+          "name": "Samoussa viande",
+          "price": 500,
+          "bulk": "à partir de 50 : 450 FCFA",
+          "tags": [
+            "sale",
+            "bulk"
+          ],
+          "featured": true
+        },
+        {
+          "id": "fish-roll-unit",
+          "name": "Fish roll",
+          "price": 500,
+          "bulk": "à partir de 50 : 450 FCFA",
+          "tags": [
+            "sale",
+            "bulk"
+          ],
+          "featured": false
+        },
+        {
+          "id": "croissants",
+          "name": "Croissants",
+          "price_range": [
+            400,
+            500,
+            600
+          ],
+          "tags": [
+            "pâtisserie"
+          ],
+          "featured": true
+        },
+        {
+          "id": "pain-chocolat",
+          "name": "Pain au chocolat",
+          "price_range": [
+            500,
+            600,
+            700
+          ],
+          "tags": [
+            "pâtisserie"
+          ],
+          "featured": true
+        },
+        {
+          "id": "mini-pizzas",
+          "name": "Mini pizzas",
+          "price": 500,
+          "bulk": "à partir de 50 : 450 FCFA",
+          "tags": [
+            "sale",
+            "bulk"
+          ],
+          "featured": true
+        },
+        {
+          "id": "sandwich-pf",
+          "name": "Sandwich",
+          "price": 350,
+          "tags": [
+            "sale"
+          ],
+          "featured": false
+        },
+        {
+          "id": "pastels",
+          "name": "Les pastels",
+          "price": 350,
+          "tags": [
+            "sale"
+          ],
+          "featured": false
+        },
+        {
+          "id": "tartelettes-fruits",
+          "name": "Tartelettes aux fruits",
+          "price": 800,
+          "tags": [
+            "sucré"
+          ],
+          "featured": false
+        },
+        {
+          "id": "crepes",
+          "name": "Crêpes",
+          "price_options": [
+            {
+              "label": "Nature",
+              "price": 400
+            },
+            {
+              "label": "Chocolat",
+              "price": 500
+            },
+            {
+              "label": "Nutella",
+              "price": 600
+            }
+          ],
+          "tags": [
+            "sucré"
+          ],
+          "featured": false
+        },
+        {
+          "id": "donuts",
+          "name": "Donuts",
+          "price": 350,
+          "tags": [
+            "sucré"
+          ],
+          "featured": false
+        },
+        {
+          "id": "pain-raisin",
+          "name": "Pain au raisin",
+          "price_range": [
+            500,
+            600,
+            700
+          ],
+          "tags": [
+            "pâtisserie"
+          ],
+          "featured": false
+        },
+        {
+          "id": "mini-burger",
+          "name": "Mini burger",
+          "price_options": [
+            {
+              "label": "Simple",
+              "price": 600
+            },
+            {
+              "label": "Avec fromage",
+              "price": 700
+            }
+          ],
+          "bulk": "à partir de 50 : 500 / 700 FCFA",
+          "tags": [
+            "sale",
+            "bulk"
+          ],
+          "featured": false
+        },
+        {
+          "id": "nems-unit",
+          "name": "Les nems",
+          "price": 400,
+          "bulk": "à partir de 50 : 350 FCFA",
+          "tags": [
+            "sale",
+            "bulk"
+          ],
+          "featured": false
+        },
+        {
+          "id": "quiche",
+          "name": "Quiche",
+          "price": 800,
+          "bulk": "à partir de 50 : 700 FCFA",
+          "tags": [
+            "sale",
+            "bulk"
+          ],
+          "featured": false
+        },
+        {
+          "id": "cakes",
+          "name": "Cakes (petits gâteaux)",
+          "price": 200,
+          "bulk": "à partir de 50 : 150 FCFA",
+          "tags": [
+            "sucré",
+            "bulk"
+          ],
+          "featured": false
+        },
+        {
+          "id": "friands",
+          "name": "Friands",
+          "price_range": [
+            400,
+            500,
+            600
+          ],
+          "tags": [
+            "sale"
+          ],
+          "featured": false
+        },
+        {
+          "id": "rouler-saucisses",
+          "name": "Rouler saucisses",
+          "price": 400,
+          "tags": [
+            "sale"
+          ],
+          "featured": false
+        },
+        {
+          "id": "ailerons",
+          "name": "Ailerons",
+          "price": 600,
+          "tags": [
+            "sale"
+          ],
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "encas",
+      "name": "Encas",
+      "items": [
+        {
+          "id": "spaghetti",
+          "name": "Spaghetti",
+          "price": 1000,
+          "tags": [
+            "plat"
+          ],
+          "featured": true
+        },
+        {
+          "id": "spaghetti-dose",
+          "name": "Spaghetti dosé",
+          "price": 1500,
+          "tags": [
+            "plat"
+          ],
+          "featured": false
+        },
+        {
+          "id": "frites",
+          "name": "Assiette de frites",
+          "price": 1000,
+          "tags": [
+            "plat"
+          ],
+          "featured": true
+        }
+      ]
+    },
+    {
+      "id": "burgers",
+      "name": "Burgers",
+      "items": [
+        {
+          "id": "mowgli",
+          "name": "Mowgli",
+          "desc": "Steak haché, laitue, tomate, oignon, sauce burger",
+          "price": 1500,
+          "tags": [
+            "burger"
+          ],
+          "featured": false
+        },
+        {
+          "id": "bagheera",
+          "name": "Bagheera",
+          "desc": "Steak haché, fromage, laitue, oignon, sauce burger",
+          "price": 2000,
+          "tags": [
+            "burger",
+            "fromage"
+          ],
+          "featured": false
+        },
+        {
+          "id": "baloo",
+          "name": "Baloo",
+          "desc": "Double steak, salade, double fromage, oignon, sauce burger",
+          "price": 3500,
+          "tags": [
+            "burger",
+            "double"
+          ],
+          "featured": true
+        }
+      ]
+    },
+    {
+      "id": "snacks",
+      "name": "Snacks",
+      "items": [
+        {
+          "id": "sandwich-verum",
+          "name": "Sandwich Verum",
+          "desc": "Salade, morceaux de viande de bœuf, sauce américaine, frites",
+          "price": 2000,
+          "tags": [
+            "snack"
+          ],
+          "featured": false
+        },
+        {
+          "id": "cheese-croissant",
+          "name": "Cheese croissant",
+          "desc": "Mozzarella, sauce béchamel, salade, jambon de dinde",
+          "price": 1500,
+          "tags": [
+            "snack",
+            "fromage"
+          ],
+          "featured": true
+        },
+        {
+          "id": "panini-simple",
+          "name": "Panini simple",
+          "desc": "Salade, viande hachée, mozzarella",
+          "price": 2000,
+          "tags": [
+            "snack"
+          ],
+          "featured": true
+        },
+        {
+          "id": "panini-moed",
+          "name": "Panini Moed",
+          "desc": "Salade, jambon de dinde, mozzarella, emmental",
+          "price": 1500,
+          "tags": [
+            "snack"
+          ],
+          "featured": false
+        },
+        {
+          "id": "panini-authentica",
+          "name": "Panini authentica",
+          "desc": "Salade, viande hachée, jambon de dinde, mozzarella, emmental",
+          "price": 2000,
+          "tags": [
+            "snack"
+          ],
+          "featured": true
+        },
+        {
+          "id": "shawarma-poulet",
+          "name": "Shawarma poulet",
+          "price": 1500,
+          "tags": [
+            "snack"
+          ],
+          "featured": true
+        },
+        {
+          "id": "shawarma-viande",
+          "name": "Shawarma viande",
+          "price": 1500,
+          "tags": [
+            "snack"
+          ],
+          "featured": false
+        },
+        {
+          "id": "plat-shawarma",
+          "name": "Plat de shawarma",
+          "desc": "Shawarma, frites, salade",
+          "price": 1500,
+          "tags": [
+            "plat"
+          ],
+          "featured": false
+        },
+        {
+          "id": "hot-dog",
+          "name": "Hot dog",
+          "price": 1200,
+          "tags": [
+            "snack"
+          ],
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "starters",
+      "name": "Starters",
+      "items": [
+        {
+          "id": "samoussa-leg-5",
+          "name": "Samoussa légumes (5 pièces)",
+          "price": 1500,
+          "tags": [
+            "entrée"
+          ],
+          "featured": false
+        },
+        {
+          "id": "samoussa-viande-5",
+          "name": "Samoussa viande (5 pièces)",
+          "price": 2000,
+          "tags": [
+            "entrée"
+          ],
+          "featured": false
+        },
+        {
+          "id": "samoussa-poisson-5",
+          "name": "Samoussa poisson (5 pièces)",
+          "price": 1500,
+          "tags": [
+            "entrée"
+          ],
+          "featured": false
+        },
+        {
+          "id": "boulettes-5",
+          "name": "Boulettes de viande (5 pièces)",
+          "price": 2000,
+          "tags": [
+            "entrée"
+          ],
+          "featured": false
+        },
+        {
+          "id": "nems-5",
+          "name": "Nems (5 pièces)",
+          "price": 2500,
+          "tags": [
+            "entrée"
+          ],
+          "featured": false
+        },
+        {
+          "id": "fishroll-5",
+          "name": "Fish roll (5 pièces)",
+          "price": 2500,
+          "tags": [
+            "entrée"
+          ],
+          "featured": false
+        }
+      ]
+    },
+    {
+      "id": "pizza",
+      "name": "Pizza",
+      "items": [
+        {
+          "id": "eliza",
+          "name": "Eliza",
+          "desc": "Sauce tomate, emmental, mozzarella, basilics, olives",
+          "price": 2500,
+          "tags": [
+            "pizza"
+          ],
+          "featured": false
+        },
+        {
+          "id": "percy",
+          "name": "Percy",
+          "desc": "Sauce tomate, emmental, mozzarella, saucisses, olives",
+          "price": 3000,
+          "tags": [
+            "pizza"
+          ],
+          "featured": false
+        },
+        {
+          "id": "darwin",
+          "name": "Darwin",
+          "desc": "Sauce tomate, emmental, mozzarella, viande hachée, poivron, oignon, crème fraîche, olives",
+          "price": 4200,
+          "tags": [
+            "pizza"
+          ],
+          "featured": true
+        },
+        {
+          "id": "willow",
+          "name": "Willow",
+          "desc": "Sauce tomate, emmental, mozzarella, jambon de dinde, crème fraîche, œuf, olives",
+          "price": 4500,
+          "tags": [
+            "pizza"
+          ],
+          "featured": true
+        },
+        {
+          "id": "pizza-alethinos",
+          "name": "Alethinos",
+          "desc": "Sauce tomate, emmental, mozzarella, crème fraîche, oignon, poivron, champignon, piment vert, jambon dinde, viande hachée, olives",
+          "price": 6000,
+          "tags": [
+            "pizza",
+            "signature"
+          ],
+          "featured": true
+        }
+      ]
+    }
+  ]
+}

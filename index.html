@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#6b2bd1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Alethinos">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<link rel="stylesheet" href="./app.css">
+<title>Alethinos — Pâtisserie & Événements</title>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-left">
+        <img src="./assets/logo.png" alt="Logo Alethinos" class="brand-logo">
+        <div class="brand-text">
+          <h1>Alethinos <small>— Pâtisserie</small></h1>
+          <div class="mini">“L’authenticité du goût. L’exigence du détail.”</div>
+        </div>
+      </div>
+      <a class="pill" href="./cart.html" aria-label="Panier">🧺 <span class="badge" data-cart-badge></span></a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- 1) HERO -->
+    <section class="hero section" id="accueil">
+      <div class="tagline">Alethinos Pâtisserie</div>
+      <h2 style="margin-top:6px;">Pâtisserie – Décoration événementielle – Formation</h2>
+      <p>Le goût, le sérieux et la créativité, au cœur de <strong>Avedji / Lomé</strong>.<br>
+      Gâteaux, petits déjeuners, plateaux salés & sucrés, événements… on s’occupe de tout.</p>
+
+      <div style="margin-top:12px;">
+        <button class="btn wa bigbtn" id="btnWaCommander">📱 Commander sur WhatsApp</button>
+        <button class="btn secondary bigbtn" style="margin-top:10px;" id="btnWaDevis">🎉 Demander un devis événement</button>
+      </div>
+
+      <p class="mini" style="margin-top:12px;">
+        📍 <strong>Avedji woéssomé, non loin de la pharmacie Victoire</strong> — Ouvert : <strong>Mardi - Samedi : 7h - 22h • Dimanche : 14h - 22h</strong><br>
+        📞 <a href="tel:+22870398573">+228 70 39 85 73</a> • <a href="tel:+22879451790">+228 79 45 17 90</a>
+      </p>
+
+      <div class="kpi" style="margin-top:10px;">
+        <span>✅ Mobile-first</span>
+        <span>📱 WhatsApp rapide</span>
+        <span>🧺 Panier optionnel</span>
+      </div>
+    </section>
+
+    <div class="hr"></div>
+
+    <!-- 2) PRODUITS PHARES -->
+    <section class="card section" id="phares">
+      <h2>Nos incontournables du quotidien</h2>
+      <p class="sub">Chez Alethinos, on se concentre sur ce que les clients aiment vraiment. Voilà une sélection de nos produits qui partent le plus, frais chaque jour.</p>
+
+      <div class="grid" style="margin-top:10px;">
+        <div class="tile">
+          <strong>🍝 Spaghetti gourmands</strong>
+          <small>Version maison, bien assaisonnée, idéale pour le déjeuner ou le soir.</small>
+          <div class="mini" style="margin-top:8px;"><strong>Prix :</strong> à partir de <strong>1 000 F</strong> la portion</div>
+          <button class="btn wa" style="margin-top:10px; width:100%;" data-wa-item="Spaghetti gourmands">Commander sur WhatsApp</button>
+        </div>
+
+        <div class="tile">
+          <strong>🥟 Samoussas & snacks salés</strong>
+          <small>Parfait pour les petites faims, les bureaux, les réunions et les plateaux.</small>
+          <div class="mini" style="margin-top:8px;"><strong>Prix :</strong> à partir de <strong>400 F</strong> la pièce</div>
+          <button class="btn wa" style="margin-top:10px; width:100%;" data-wa-item="Samoussas & snacks salés">Commander sur WhatsApp</button>
+        </div>
+
+        <div class="tile">
+          <strong>🥐 Croissants & viennoiseries</strong>
+          <small>Pour le petit-déjeuner ou la pause café, tout juste sortis du four.</small>
+          <div class="mini" style="margin-top:8px;"><strong>Prix :</strong> à partir de <strong>400 F</strong></div>
+          <button class="btn wa" style="margin-top:10px; width:100%;" data-wa-item="Croissants & viennoiseries">Commander sur WhatsApp</button>
+        </div>
+
+        <div class="tile">
+          <strong>🎂 Gâteaux & entremets sur mesure</strong>
+          <small>Anniversaires, baptêmes, surprises… dites-nous votre idée, on la réalise.</small>
+          <div class="mini" style="margin-top:8px;"><strong>Prix :</strong> sur devis (selon taille et design)</div>
+          <button class="btn secondary" style="margin-top:10px; width:100%;" data-wa-devis="Gâteaux & entremets sur mesure">Demander un devis</button>
+        </div>
+      </div>
+
+      <div style="margin-top:12px; display:flex; gap:10px;">
+        <a class="pill" href="./menu.html">Voir le menu</a>
+        <a class="pill" href="./cart.html">Voir le panier</a>
+      </div>
+    </section>
+
+    <div class="hr"></div>
+
+    <!-- 3) FORMULES & COMMANDES -->
+    <section class="card section" id="formules">
+      <h2>Formules pratiques pour votre quotidien</h2>
+      <p>Vous pouvez commander pour :<br>
+      • vos petits déjeuners • vos pauses bureau • vos petites réceptions à la maison • vos réunions au travail</p>
+
+      <div class="grid" style="margin-top:10px;">
+        <div class="tile">
+          <strong>☕ Formule Petit Déj Bureau</strong>
+          <small>Mini viennoiseries + boisson / personne</small>
+          <div class="mini" style="margin-top:8px;"><strong>À partir de :</strong> <strong>sur devis</strong> (selon nombre de personnes)</div>
+          <button class="btn secondary" style="margin-top:10px; width:100%;" data-wa-devis="Formule Petit Déj Bureau">Demander un devis</button>
+        </div>
+
+        <div class="tile">
+          <strong>🍽️ Plateaux salés prêts à servir</strong>
+          <small>Samoussas, petits feuilletés, mini sandwichs…</small>
+          <div class="mini" style="margin-top:8px;"><strong>À partir de :</strong> <strong>sur devis</strong> (selon le plateau)</div>
+          <button class="btn wa" style="margin-top:10px; width:100%;" data-wa-item="Plateaux salés">Commander / Réserver</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="hr"></div>
+
+    <!-- 4) TEASER ÉVÉNEMENTIEL & FORMATION -->
+    <section class="card section" id="evenements">
+      <h2>Événements & Formations avec Alethinos</h2>
+      <p>Alethinos, ce n’est pas seulement une pâtisserie de quartier. Nous accompagnons aussi :<br>
+      • anniversaires • mariages & fiançailles • événements d’entreprise • formations en pâtisserie & décoration</p>
+      <p class="sub">Que vous soyez particulier ou professionnel, on construit avec vous une solution adaptée à votre budget.</p>
+
+      <a class="btn secondary" style="display:block; text-align:center; margin-top:10px;" href="./evenementiel.html">Voir nos services événementiels & formations</a>
+    </section>
+
+    <div class="hr"></div>
+
+    <!-- 5) À PROPOS -->
+    <section class="card section" id="apropos">
+      <h2>Qui est derrière Alethinos ?</h2>
+      <p>Alethinos Pâtisserie est portée par <strong>Victoire Edoh</strong>, passionnée de pâtisserie, de décoration événementielle et de formation.</p>
+      <p>À force de servir le quartier, les familles et les entreprises, Alethinos est devenue une référence locale pour ceux qui cherchent à la fois :<br>
+      • du goût • du sérieux • une touche de créativité dans chaque événement.</p>
+      <p class="sub"><strong>Notre priorité :</strong> respecter votre budget, vos délais et vos invités.</p>
+
+      <div class="notice">👉 Ajoutez ici 1 photo propre de Victoire (ça rassure énormément pour les grosses commandes).</div>
+    </section>
+
+    <div class="hr"></div>
+
+    <!-- 6) CONFIANCE / TÉMOIGNAGE -->
+    <section class="card section" id="confiance">
+      <h2>Ils nous font confiance</h2>
+      <p class="sub">“Quand on commande chez Alethinos, c’est propre, c’est bon, et c’est livré à l’heure. Ça soulage.”</p>
+      <p class="mini">Astuce : remplacez par 1 vrai témoignage client + prénom + quartier (ou “Client entreprise”).</p>
+    </section>
+
+    <div class="hr"></div>
+
+    <!-- 7) CONTACT -->
+    <section class="card section" id="contact">
+      <h2>Nous contacter</h2>
+      <p>📞 WhatsApp / Appels : <a href="tel:+22870398573">+228 70 39 85 73</a> • <a href="tel:+22879451790">+228 79 45 17 90</a><br>
+      📍 Adresse : <strong>Boulevard Faure Gnassingbé, près de Pharmacie Victoire, Lomé</strong><br>
+      🕒 Horaires : <strong>Mardi - Samedi : 7h - 22h • Dimanche : 14h - 22h</strong></p>
+
+      <div class="grid" style="margin-top:10px;">
+        <button class="btn wa" id="btnWaCommander2">📱 Commander sur WhatsApp</button>
+        <button class="btn secondary" id="btnWaDevis2">🎉 Demander un devis</button>
+      </div>
+
+      <div class="grid" style="margin-top:10px;">
+        <a class="tile" href="https://maps.google.com/?q=Avedji%20woéssomé%20Pharmacie%20Victoire%20Lomé%20Togo" target="_blank" rel="noopener"><strong>Google Maps</strong><small>Itinéraire</small></a>
+        <a class="tile" href="https://share.google/TDXREVLnrGgGEecZ6" target="_blank" rel="noopener"><strong>Avis Google</strong><small>Voir / laisser un avis</small></a>
+        <a class="tile" href="./contact.html"><strong>Devis rapide</strong><small>Formulaire simple</small></a>
+      </div>
+    </section>
+
+    <div class="notice" style="margin:14px 0 90px;">
+      <strong>Astuce :</strong> sur iPhone/Android → “Ajouter à l’écran d’accueil” pour installer Alethinos comme une app.
+    </div>
+  </div>
+
+  <div class="cartbar" id="cartbar">
+    <div class="inner" role="button" tabindex="0" onclick="location.href='./cart.html'">
+      <div><strong>Voir le panier</strong> <span class="badge" data-cart-badge></span></div>
+      <div><span id="cartbarTotal"></span></div>
+    </div>
+  </div>
+
+  <div class="navbar">
+    <div class="inner">
+      <a class="navlink active" href="./index.html#accueil"><div class="navicon">🏠</div>Accueil</a>
+      <a class="navlink" href="./menu.html"><div class="navicon">🍕</div>Menu</a>
+      <a class="navlink" href="./evenementiel.html"><div class="navicon">🎉</div>Events</a>
+      <a class="navlink" href="./index.html#contact"><div class="navicon">📍</div>Contact</a>
+    </div>
+  </div>
+
+  <script>
+    if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
+  </script>
+
+  <script type="module">
+    import { updateCartBadges, updateCartBar } from "./cart.js";
+    const WA = "22870398573";
+
+    function waMessageCommande(produit){
+      return `Bonjour Alethinos 👋\n\nJe voudrais commander : *${produit || "[Produit]"}*\nQuantité : [1/2/...]\nPour : [date/heure]\n\nNom : [votre nom]\nTéléphone : [votre numéro]\n\nMerci !`;
+    }
+
+    function waMessageDevis(sujet){
+      return `Bonjour Alethinos ! 👋\n\nJe souhaite un devis / une commande.\n\n• Sujet : *${sujet || "[Événement/Produit]"}*\n• Date : [DATE]\n• Heure : [HEURE]\n• Nombre de personnes : [NOMBRE]\n• Budget estimatif : [BUDGET]\n\nDétails : [ce que vous voulez exactement]\n\nTéléphone : [votre numéro]\nMerci !`;
+    }
+
+    function goWA(msg){ location.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg); }
+
+    document.getElementById("btnWaCommander").addEventListener("click", ()=>goWA(waMessageCommande("Commande (à préciser)")));
+    document.getElementById("btnWaCommander2").addEventListener("click", ()=>goWA(waMessageCommande("Commande (à préciser)")));
+    document.getElementById("btnWaDevis").addEventListener("click", ()=>goWA(waMessageDevis("Devis événement")));
+    document.getElementById("btnWaDevis2").addEventListener("click", ()=>goWA(waMessageDevis("Devis / commande")));
+
+    document.querySelectorAll("[data-wa-item]").forEach(btn=>{
+      btn.addEventListener("click", ()=>goWA(waMessageCommande(btn.getAttribute("data-wa-item"))));
+    });
+    document.querySelectorAll("[data-wa-devis]").forEach(btn=>{
+      btn.addEventListener("click", ()=>goWA(waMessageDevis(btn.getAttribute("data-wa-devis"))));
+    });
+
+    window.addEventListener("DOMContentLoaded", ()=>{ updateCartBadges(); updateCartBar(); });
+  </script>
+</body>
+</html>

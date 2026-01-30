@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#6b2bd1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Alethinos">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<link rel="stylesheet" href="./app.css">
+<title>Paiement — Alethinos</title>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-left">
+        <img src="./assets/logo.png" alt="Logo Alethinos" class="brand-logo">
+        <div class="brand-text">
+          <h1>💳 Paiement</h1>
+        <div class="mini">USSD assisté + confirmation WhatsApp. Simple et fiable.</div>
+              </div>
+      </div>
+      <a class="pill" href="./cart.html">🧺 Panier <span class="badge" data-cart-badge></span></a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card" id="summary"></div>
+
+    <div class="hr"></div>
+
+    <div class="card">
+      <div class="row">
+        <div>
+          <strong>ID commande</strong>
+          <div class="mini">À utiliser comme référence si possible</div>
+        </div>
+        <div class="price" id="orderId"></div>
+      </div>
+    </div>
+
+    <div style="margin-top:10px;" class="card">
+      <label><strong>Code Marchand (Mixx/TMoney ou Flooz)</strong></label>
+      <input class="input" id="merchantCode" placeholder="Ex: 123456 (marchand officiel)">
+      <div class="mini">Ce code vient de votre contrat marchand (opérateur).</div>
+    </div>
+
+    <div style="margin-top:10px;" class="notice">
+      <strong>Pourquoi on ouvre le menu USSD principal ?</strong><br>
+      Les raccourcis USSD “direct-pay” ne sont pas uniformes. Le menu principal est le plus fiable : vous choisissez “Paiement Marchand”, puis vous saisissez le code marchand + montant + (référence si disponible).
+    </div>
+
+    <div class="hr"></div>
+
+    <button class="btn secondary" onclick="location.href='./cart.html'">← Revenir au panier</button>
+    <button class="btn" id="tmoneyBtn">Payer via USSD — Mixx/TMoney (Togocom)</button>
+    <button class="btn" id="floozBtn">Payer via USSD — Flooz (Moov)</button>
+    <button class="btn wa" id="waBtn">Envoyer la confirmation sur WhatsApp</button>
+
+    <div class="hr"></div>
+    <div class="mini">
+      <strong>Après paiement :</strong> envoyez la référence transaction (ou capture) + l’ID commande sur WhatsApp pour validation rapide.
+    </div>
+  </div>
+
+  <div class="cartbar" id="cartbar">
+  <div class="inner" role="button" tabindex="0" onclick="location.href='./cart.html'">
+    <div><strong>Voir le panier</strong> <span class="badge" data-cart-badge></span></div>
+    <div><span id="cartbarTotal"></span></div>
+  </div>
+</div>
+  <div class="navbar">
+  <div class="inner">
+    <a class="navlink" href="./menu.html"><div class="navicon">🍕</div>Menu</a>
+    <a class="navlink" href="./cart.html"><div class="navicon">🧺</div>Panier <span class="badge" data-cart-badge></span></a>
+    <a class="navlink active" href="./order.html"><div class="navicon">🛵</div>Commander</a>
+    <a class="navlink" href="./index.html#infos"><div class="navicon">📍</div>Infos</a>
+  </div>
+</div>
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./sw.js");
+  }
+</script>
+<script type="module">
+  import { updateCartBadges, updateCartBar } from "./cart.js";
+  window.addEventListener("DOMContentLoaded", () => { updateCartBadges(); updateCartBar(); });
+</script>
+
+  <script type="module">
+    import { getCart, cartTotal, formatFCFA, ensureOrderId, updateCartBadges, updateCartBar } from "./cart.js";
+
+    const summary = document.getElementById("summary");
+    const orderIdEl = document.getElementById("orderId");
+    const merchantEl = document.getElementById("merchantCode");
+    const WA = "22870398573";
+
+    function render(){
+      const cart = getCart();
+      if (!cart.length){
+        summary.innerHTML = `<h2>Récapitulatif</h2><div class="notice">Panier vide. Retournez au menu.</div>`;
+        return;
+      }
+      const lines = cart.map(x=>`
+        <div class="row" style="margin:8px 0;">
+          <div><strong>${x.name}</strong><div class="mini">× ${x.qty}</div></div>
+          <div class="price">${formatFCFA(x.price * x.qty)}</div>
+        </div>
+      `).join("");
+
+      summary.innerHTML = `
+        <h2>Récapitulatif</h2>
+        ${lines}
+        <div class="hr"></div>
+        <div class="row">
+          <div class="price">Total</div>
+          <div class="price">${formatFCFA(cartTotal())}</div>
+        </div>
+      `;
+      orderIdEl.textContent = ensureOrderId();
+      updateCartBadges(); updateCartBar();
+    }
+
+    function pay(operator){
+      const merchant = merchantEl.value.trim();
+      if (!merchant){ alert("Veuillez entrer le code marchand d'abord."); return; }
+      const amount = cartTotal();
+      const orderId = orderIdEl.textContent;
+
+      alert(
+        "Le menu USSD va s'ouvrir. Ensuite :\n" +
+        "1) Paiement Marchand\n" +
+        "2) Code Marchand: " + merchant + "\n" +
+        "3) Montant: " + amount + " FCFA\n" +
+        "4) Référence (si demandé): " + orderId
+      );
+
+      const ussd = operator === "tmoney" ? "tel:*145%23" : "tel:*155%23";
+      window.location.href = ussd;
+    }
+
+    function confirmWA(){
+      const cart = getCart();
+      const amount = cartTotal();
+      const orderId = orderIdEl.textContent;
+
+      let msg = "Bonjour Alethinos 👋\n";
+      msg += "Je confirme ma commande.\n";
+      msg += "ID commande: " + orderId + "\n\n";
+      cart.forEach(x=>{ msg += "- " + x.name + " × " + x.qty + " = " + (x.price*x.qty) + " FCFA\n"; });
+      msg += "\nTotal: " + amount + " FCFA\n";
+      msg += "Paiement: Mobile Money (USSD). Référence transaction / capture ci-joint.";
+
+      window.location.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg);
+    }
+
+    document.getElementById("tmoneyBtn").addEventListener("click", ()=>pay("tmoney"));
+    document.getElementById("floozBtn").addEventListener("click", ()=>pay("flooz"));
+    document.getElementById("waBtn").addEventListener("click", confirmWA);
+
+    render();
+  </script>
+</body>
+</html>
