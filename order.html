@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#6b2bd1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Alethinos">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<link rel="stylesheet" href="./app.css">
+<title>Commander — Alethinos</title>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-left">
+        <img src="./assets/logo.png" alt="Logo Alethinos" class="brand-logo">
+        <div class="brand-text">
+          <h1>🛵 Commander</h1>
+        <div class="mini">Deux chemins : Express (maintenant) ou Plus tard (événement).</div>
+              </div>
+      </div>
+      <a class="pill" href="./cart.html">🧺 Panier <span class="badge" data-cart-badge></span></a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2>🚀 Commande Express — Prête à emporter</h2>
+      <p>Pour une préparation immédiate. Vous envoyez une commande claire, Alethinos confirme.</p>
+
+      <form id="orderNowForm">
+        <label><strong>Nom *</strong></label>
+        <input class="input" name="name" type="text" placeholder="Ex: Koffi Mensah" required>
+
+        <div style="height:10px;"></div>
+
+        <label><strong>Téléphone *</strong></label>
+        <input class="input" name="phone" type="tel" placeholder="Ex: 90 12 34 56" required>
+
+        <div style="height:10px;"></div>
+
+        <label><strong>Heure de retrait</strong></label>
+        <select class="input" name="pickupTime">
+          <option>Dès que possible</option>
+          <option>Dans 30 minutes</option>
+          <option>Dans 1 heure</option>
+          <option>Heure spécifique (précisez en notes)</option>
+        </select>
+
+        <div style="height:10px;"></div>
+
+        <label><strong>Commande *</strong></label>
+        <textarea class="input" name="order" rows="4" placeholder="Ex: 1 Pizza Alethinos, 2 Burger Mowgli, 1 Combo…" required></textarea>
+
+        <div style="height:10px;"></div>
+
+        <label><strong>Notes (allergies, modifications)</strong></label>
+        <textarea class="input" name="notes" rows="2" placeholder="Ex: sans oignons, sauce à part…"></textarea>
+
+        <div style="height:12px;"></div>
+        <button class="btn wa" type="submit">Envoyer sur WhatsApp (Express)</button>
+      </form>
+
+      <div class="mini" style="margin-top:10px;">Si vous avez déjà rempli un panier, vous pouvez aussi passer par <strong>Paiement</strong>.</div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="card">
+      <h2>📅 Commande pour plus tard / Événement</h2>
+      <p>Commandes en gros, événements, et planification. Un message guidé pour gagner du temps.</p>
+      <button class="btn wa" id="laterBtn">Commander via WhatsApp (Planification)</button>
+      <div class="mini" style="margin-top:10px;">Vous pourrez modifier le message avant d’envoyer.</div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="notice">
+      <strong>Pro tip :</strong> Pour éviter la confusion en cuisine, utilisez “Express” pour “maintenant”, et “Plus tard” pour tout ce qui est planifié.
+    </div>
+  </div>
+
+  <div class="cartbar" id="cartbar">
+  <div class="inner" role="button" tabindex="0" onclick="location.href='./cart.html'">
+    <div><strong>Voir le panier</strong> <span class="badge" data-cart-badge></span></div>
+    <div><span id="cartbarTotal"></span></div>
+  </div>
+</div>
+  <div class="navbar">
+  <div class="inner">
+    <a class="navlink" href="./menu.html"><div class="navicon">🍕</div>Menu</a>
+    <a class="navlink" href="./cart.html"><div class="navicon">🧺</div>Panier <span class="badge" data-cart-badge></span></a>
+    <a class="navlink active" href="./order.html"><div class="navicon">🛵</div>Commander</a>
+    <a class="navlink" href="./index.html#infos"><div class="navicon">📍</div>Infos</a>
+  </div>
+</div>
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./sw.js");
+  }
+</script>
+<script type="module">
+  import { updateCartBadges, updateCartBar } from "./cart.js";
+  window.addEventListener("DOMContentLoaded", () => { updateCartBadges(); updateCartBar(); });
+</script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      const phoneNumber = "22870398573";
+
+      const laterTemplate =
+"Bonjour Alethinos ! 👋\n\n" +
+"Je souhaite planifier une commande pour une date future.\n\n" +
+"*Informations principales :*\n" +
+"• Nom : [VOTRE NOM]\n" +
+"• Date souhaitée : [DATE]\n" +
+"• Heure souhaitée : [HEURE]\n" +
+"• Pour : [FAMILLE / ANNIVERSAIRE / ENTREPRISE / AUTRE]\n" +
+"• Nombre de personnes : [NOMBRE]\n\n" +
+"*Commande prévisionnelle :*\n" +
+"[Ex : 50 Samoussa Viande, 20 Mini Pizzas, 5 Pizzas Alethinos, 20 Cocktails Combo...]\n\n" +
+"*Budget estimatif / Détails supplémentaires :*\n" +
+"[Précisez ici]\n\n" +
+"*Mes coordonnées :*\n" +
+"Téléphone : [VOTRE TÉLÉPHONE]\n\n" +
+"Merci !";
+
+      document.getElementById("laterBtn").addEventListener("click", function(){
+        location.href = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(laterTemplate);
+      });
+
+      const form = document.getElementById("orderNowForm");
+      form.addEventListener("submit", function(e){
+        e.preventDefault();
+        const name = form.elements["name"].value.trim();
+        const phone = form.elements["phone"].value.trim();
+        const pickupTime = form.elements["pickupTime"].value.trim();
+        const order = form.elements["order"].value.trim();
+        const notes = form.elements["notes"].value.trim();
+        const orderId = "EXP-" + Math.random().toString(36).slice(2,8).toUpperCase();
+
+        const msg =
+"🛵 *Commande Express — Alethinos*\n" +
+"ID: *" + orderId + "*\n\n" +
+"Nom: " + name + "\n" +
+"Téléphone: " + phone + "\n" +
+"Retrait: " + pickupTime + "\n\n" +
+"*Commande:*\n" +
+order + "\n\n" +
+"*Notes:*\n" +
+(notes || "—") + "\n\n" +
+"Merci !";
+
+        location.href = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(msg);
+      });
+    });
+  </script>
+</body>
+</html>

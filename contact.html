@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#6b2bd1">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<link rel="stylesheet" href="./app.css">
+<title>Contact & Devis — Alethinos</title>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-left">
+        <img src="./assets/logo.png" alt="Logo Alethinos" class="brand-logo">
+        <div class="brand-text">
+          <h1>Contact & Devis</h1>
+        <div class="mini">Simple, rapide, WhatsApp d’abord.</div>
+              </div>
+      </div>
+      <a class="pill" href="./index.html">← Accueil</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2>Nous joindre</h2>
+      <p>📞 WhatsApp / Appels : <a href="tel:+22870398573">+228 70 39 85 73</a> • <a href="tel:+22879451790">+228 79 45 17 90</a><br>
+      📍 Avedji woéssomé, non loin de la pharmacie Victoire, Lomé<br>🕒 Horaires : Mardi - Samedi : 7h - 22h • Dimanche : 14h - 22h</p>
+
+      <div class="grid" style="margin-top:10px;">
+        <a class="btn wa" style="text-align:center;" href="https://wa.me/22870398573" target="_blank" rel="noopener">📱 Ouvrir WhatsApp</a>
+        <a class="btn secondary" style="text-align:center;" href="https://maps.google.com/?q=Avedji%20woéssomé%20Pharmacie%20Victoire%20Lomé%20Togo" target="_blank" rel="noopener">📍 Itinéraire</a>
+        <a class="btn secondary" style="text-align:center;" href="https://share.google/TDXREVLnrGgGEecZ6" target="_blank" rel="noopener">⭐ Avis Google</a>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="card">
+      <h2>Devis rapide</h2>
+      <p class="sub">Remplissez ce petit formulaire. Au clic, ça ouvre WhatsApp avec votre message déjà prêt.</p>
+
+      <form id="devisForm" class="stack" style="margin-top:10px;">
+        <label class="mini"><strong>Nom</strong></label>
+        <input class="input" id="nom" type="text" placeholder="Ex: Koffi Mensah" required>
+
+        <label class="mini"><strong>Téléphone</strong></label>
+        <input class="input" id="tel" type="tel" placeholder="Ex: 90 12 34 56" required>
+
+        <label class="mini"><strong>Type de demande</strong></label>
+        <select class="input" id="type">
+          <option>Commande</option>
+          <option>Événement</option>
+          <option>Formation</option>
+        </select>
+
+        <label class="mini"><strong>Date souhaitée</strong></label>
+        <input class="input" id="date" type="text" placeholder="Ex: Samedi 10 février" required>
+
+        <label class="mini"><strong>Message</strong></label>
+        <textarea class="input" id="msg" rows="4" placeholder="Expliquez ce que vous voulez (quantités, goût, budget, etc.)" required></textarea>
+
+        <button class="btn wa bigbtn" type="submit">📩 Envoyer sur WhatsApp</button>
+      </form>
+
+      <p class="mini" style="margin-top:10px;">Astuce : si vous avez un budget, mettez-le. Ça accélère la réponse.</p>
+    </div>
+
+    <div class="notice" style="margin:16px 0 90px;">
+      <strong>Rappel :</strong> pour les grosses commandes, mettez : date • personnes • budget • lieu • heure.
+    </div>
+  </div>
+
+  <div class="navbar">
+    <div class="inner">
+      <a class="navlink" href="./index.html"><div class="navicon">🏠</div>Accueil</a>
+      <a class="navlink" href="./menu.html"><div class="navicon">🍕</div>Menu</a>
+      <a class="navlink" href="./evenementiel.html"><div class="navicon">🎉</div>Events</a>
+      <a class="navlink active" href="./contact.html"><div class="navicon">📍</div>Contact</a>
+    </div>
+  </div>
+
+  <script>
+    if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
+    const WA = "22870398573";
+
+    document.getElementById("devisForm").addEventListener("submit", (e)=>{
+      e.preventDefault();
+      const nom = document.getElementById("nom").value.trim();
+      const tel = document.getElementById("tel").value.trim();
+      const type = document.getElementById("type").value;
+      const date = document.getElementById("date").value.trim();
+      const msg = document.getElementById("msg").value.trim();
+
+      const text =
+`Bonjour Alethinos 👋\n\nJe vous contacte pour : *${type}*\n\n` +
+`• Nom : ${nom}\n` +
+`• Téléphone : ${tel}\n` +
+`• Date souhaitée : ${date}\n\n` +
+`Message :\n${msg}\n\nMerci !`;
+
+      location.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(text);
+    });
+  </script>
+</body>
+</html>
