@@ -213,7 +213,9 @@
       return `Bonjour Alethinos ! 👋\n\nJe souhaite un devis / une commande.\n\n• Sujet : *${sujet || "[Événement/Produit]"}*\n• Date : [DATE]\n• Heure : [HEURE]\n• Nombre de personnes : [NOMBRE]\n• Budget estimatif : [BUDGET]\n\nDétails : [ce que vous voulez exactement]\n\nTéléphone : [votre numéro]\nMerci !`;
     }
 
-    function goWA(msg){ location.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg); }
+    function goWA(msg){ const __waUrl = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg);
+        const __w = window.open(__waUrl, "_blank", "noopener,noreferrer");
+        if(!__w){ window.location.href = __waUrl; } }
 
     document.getElementById("btnWaCommander").addEventListener("click", ()=>goWA(waMessageCommande("Commande (à préciser)")));
     document.getElementById("btnWaCommander2").addEventListener("click", ()=>goWA(waMessageCommande("Commande (à préciser)")));
