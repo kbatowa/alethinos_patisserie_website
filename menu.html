@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#6b2bd1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Alethinos">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<link rel="stylesheet" href="./app.css">
+<title>Menu — Alethinos</title>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-left">
+        <img src="./assets/logo.png" alt="Logo Alethinos" class="brand-logo">
+        <div class="brand-text">
+          <h1>🍽️ Menu</h1>
+        <div class="mini">Ajoutez au panier et continuez — on finalise après.</div>
+              </div>
+      </div>
+      <a class="pill" href="./cart.html">🧺 Panier <span class="badge" data-cart-badge></span></a>
+    </div>
+    <div style="margin-top:10px;">
+      <input class="input" id="search" placeholder="Rechercher : pizza, burger, menthe, samoussa…">
+      <div class="chips" id="chips"></div><div class="mini" style="margin-top:6px;">Mode recommandé : <strong>WhatsApp</strong> (simple & fiable). Le panier reste disponible si besoin.</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="menu"></div>
+    <div class="hr"></div>
+    <div class="notice">
+      <strong>Bulk / commandes en quantité :</strong> certains items ont un tarif “à partir de 50”. Utilisez “Commander” pour planifier.
+    </div>
+  </div>
+
+  <div class="cartbar" id="cartbar">
+  <div class="inner" role="button" tabindex="0" onclick="location.href='./cart.html'">
+    <div><strong>Voir le panier</strong> <span class="badge" data-cart-badge></span></div>
+    <div><span id="cartbarTotal"></span></div>
+  </div>
+</div>
+  <div class="navbar">
+  <div class="inner">
+    <a class="navlink active" href="./menu.html"><div class="navicon">🍕</div>Menu</a>
+    <a class="navlink" href="./cart.html"><div class="navicon">🧺</div>Panier <span class="badge" data-cart-badge></span></a>
+    <a class="navlink" href="./order.html"><div class="navicon">🛵</div>Commander</a>
+    <a class="navlink" href="./index.html#infos"><div class="navicon">📍</div>Infos</a>
+  </div>
+</div>
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./sw.js");
+  }
+</script>
+<script type="module">
+  import { addToCart, updateCartBadges, updateCartBar, formatFCFA } from "./cart.js";
+  const WA = "22870398573";
+
+  const menuEl = document.getElementById("menu");
+  const chipsEl = document.getElementById("chips");
+  const searchEl = document.getElementById("search");
+
+  let DATA = null;
+  let activeCat = "featured"; // default
+  let query = "";
+
+  function priceLabel(item){
+    if (item.price !== undefined) return formatFCFA(item.price);
+    if (item.price_range) return item.price_range.map(p=>formatFCFA(p)).join(" / ");
+    if (item.price_options) return item.price_options.map(o=>o.label+ " " + formatFCFA(o.price)).join(" • ");
+    return "";
+  }
+
+  function basePrice(item){
+    if (item.price !== undefined) return item.price;
+    if (item.price_options && item.price_options.length) return item.price_options[0].price;
+    if (item.price_range && item.price_range.length) return item.price_range[0];
+    return 0;
+  }
+
+  function itemToCartPayload(item, categoryName){
+    return { id: item.id, name: item.name, price: basePrice(item), category: categoryName };
+  }
+
+  function renderChips(){
+    const cats = [{id:"featured", name:"🔥 Phares"}, {id:"all", name:"Tout"}].concat(DATA.categories.map(c=>({id:c.id, name:c.name})));
+    chipsEl.innerHTML = cats.map(c=>`
+      <button class="chip ${activeCat===c.id ? "active" : ""}" data-cat="${c.id}">${c.name}</button>
+    `).join("");
+
+    chipsEl.querySelectorAll("button").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        activeCat = btn.dataset.cat;
+        chipsEl.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));
+        btn.classList.add("active");
+        render();
+      });
+    });
+  }
+
+  function matches(item, category){
+    const hay = (item.name + " " + (item.desc||"") + " " + (category.name||"") + " " + (item.tags||[]).join(" ")).toLowerCase();
+    return hay.includes(query.toLowerCase());
+  }
+
+  function render(){
+    if (!DATA) return;
+    menuEl.innerHTML = "";
+
+    DATA.categories.forEach(category=>{
+      let items = category.items;
+
+      if (activeCat === "featured") items = items.filter(it => it.featured);
+      else if (activeCat !== "all" && activeCat !== category.id) return;
+
+      if (query) items = items.filter(it => matches(it, category));
+      if (items.length === 0) return;
+
+      const section = document.createElement("div");
+      section.className = "card";
+      section.style.margin = "10px 0 14px";
+      section.innerHTML = `
+        <div class="row">
+          <h2 style="margin:0;">${category.name}</h2>
+          <div class="mini">${items.length} item(s)</div>
+        </div>
+        <div id="list-${category.id}"></div>
+      `;
+      menuEl.appendChild(section);
+
+      const list = section.querySelector(`#list-${category.id}`);
+      list.innerHTML = items.map(it=>`
+        <div class="item">
+          <strong>${it.name}</strong>
+          ${it.desc ? `<div class="desc">${it.desc}</div>` : ""}
+          ${it.bulk ? `<div class="desc">📦 ${it.bulk}</div>` : ""}
+          <div class="meta">
+            <div class="price">${priceLabel(it)}</div>
+            <div class="row" style="gap:8px;">
+              <input class="input" style="width:78px;" type="number" min="1" value="1" data-qty="${it.id}">
+              <button class="add" data-wa="${it.id}">WhatsApp</button>
+              <button class="add" data-cart="${it.id}">+ Panier</button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+
+      list.querySelectorAll("button[data-wa]").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const item = category.items.find(x=>x.id===btn.dataset.wa);
+          const qtyInput = list.querySelector(`input[data-qty='${item.id}']`);
+          const qty = qtyInput ? (parseInt(qtyInput.value||"1",10) || 1) : 1;
+          const msg =
+            `Bonjour Alethinos 👋
+
+Je voudrais commander : *${item.name}*
+Quantité : ${qty}
+Pour : [date/heure]
+
+Nom : [votre nom]
+Téléphone : [votre numéro]
+
+Merci !`;
+          location.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg);
+        });
+      });
+
+      list.querySelectorAll("button[data-cart]").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const item = category.items.find(x=>x.id===btn.dataset.cart);
+          const qtyInput = list.querySelector(`input[data-qty='${item.id}']`);
+          const qty = qtyInput ? (parseInt(qtyInput.value||"1",10) || 1) : 1;
+          for (let i=0;i<qty;i++) addToCart(itemToCartPayload(item, category.name));
+          updateCartBadges(); updateCartBar();
+          btn.textContent = "Ajouté ✅";
+          setTimeout(()=>btn.textContent = "+ Panier", 850);
+        });
+      });
+    });
+
+    updateCartBadges(); updateCartBar();
+  }
+
+  async function init(){
+    const res = await fetch("./menu.json");
+    DATA = await res.json();
+    renderChips();
+    render();
+  }
+
+  searchEl.addEventListener("input", (e)=>{ query = e.target.value || ""; render(); });
+  init();
+</script>
+
+  <script type="module">
+  import { addToCart, updateCartBadges, updateCartBar, formatFCFA } from "./cart.js";
+  const WA = "22870398573";
+
+  const menuEl = document.getElementById("menu");
+  const chipsEl = document.getElementById("chips");
+  const searchEl = document.getElementById("search");
+
+  let DATA = null;
+  let activeCat = "featured"; // default
+  let query = "";
+
+  function priceLabel(item){
+    if (item.price !== undefined) return formatFCFA(item.price);
+    if (item.price_range) return item.price_range.map(p=>formatFCFA(p)).join(" / ");
+    if (item.price_options) return item.price_options.map(o=>o.label+ " " + formatFCFA(o.price)).join(" • ");
+    return "";
+  }
+
+  function basePrice(item){
+    if (item.price !== undefined) return item.price;
+    if (item.price_options && item.price_options.length) return item.price_options[0].price;
+    if (item.price_range && item.price_range.length) return item.price_range[0];
+    return 0;
+  }
+
+  function itemToCartPayload(item, categoryName){
+    return { id: item.id, name: item.name, price: basePrice(item), category: categoryName };
+  }
+
+  function renderChips(){
+    const cats = [{id:"featured", name:"🔥 Phares"}, {id:"all", name:"Tout"}].concat(DATA.categories.map(c=>({id:c.id, name:c.name})));
+    chipsEl.innerHTML = cats.map(c=>`
+      <button class="chip ${activeCat===c.id ? "active" : ""}" data-cat="${c.id}">${c.name}</button>
+    `).join("");
+
+    chipsEl.querySelectorAll("button").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        activeCat = btn.dataset.cat;
+        chipsEl.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));
+        btn.classList.add("active");
+        render();
+      });
+    });
+  }
+
+  function matches(item, category){
+    const hay = (item.name + " " + (item.desc||"") + " " + (category.name||"") + " " + (item.tags||[]).join(" ")).toLowerCase();
+    return hay.includes(query.toLowerCase());
+  }
+
+  function render(){
+    if (!DATA) return;
+    menuEl.innerHTML = "";
+
+    DATA.categories.forEach(category=>{
+      let items = category.items;
+
+      if (activeCat === "featured") items = items.filter(it => it.featured);
+      else if (activeCat !== "all" && activeCat !== category.id) return;
+
+      if (query) items = items.filter(it => matches(it, category));
+      if (items.length === 0) return;
+
+      const section = document.createElement("div");
+      section.className = "card";
+      section.style.margin = "10px 0 14px";
+      section.innerHTML = `
+        <div class="row">
+          <h2 style="margin:0;">${category.name}</h2>
+          <div class="mini">${items.length} item(s)</div>
+        </div>
+        <div id="list-${category.id}"></div>
+      `;
+      menuEl.appendChild(section);
+
+      const list = section.querySelector(`#list-${category.id}`);
+      list.innerHTML = items.map(it=>`
+        <div class="item">
+          <strong>${it.name}</strong>
+          ${it.desc ? `<div class="desc">${it.desc}</div>` : ""}
+          ${it.bulk ? `<div class="desc">📦 ${it.bulk}</div>` : ""}
+          <div class="meta">
+            <div class="price">${priceLabel(it)}</div>
+            <div class="row" style="gap:8px;">
+              <input class="input" style="width:78px;" type="number" min="1" value="1" data-qty="${it.id}">
+              <button class="add" data-wa="${it.id}">WhatsApp</button>
+              <button class="add" data-cart="${it.id}">+ Panier</button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+
+      list.querySelectorAll("button[data-wa]").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const item = category.items.find(x=>x.id===btn.dataset.wa);
+          const qtyInput = list.querySelector(`input[data-qty='${item.id}']`);
+          const qty = qtyInput ? (parseInt(qtyInput.value||"1",10) || 1) : 1;
+          const msg =
+            `Bonjour Alethinos 👋
+
+Je voudrais commander : *${item.name}*
+Quantité : ${qty}
+Pour : [date/heure]
+
+Nom : [votre nom]
+Téléphone : [votre numéro]
+
+Merci !`;
+          location.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg);
+        });
+      });
+
+      list.querySelectorAll("button[data-cart]").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const item = category.items.find(x=>x.id===btn.dataset.cart);
+          const qtyInput = list.querySelector(`input[data-qty='${item.id}']`);
+          const qty = qtyInput ? (parseInt(qtyInput.value||"1",10) || 1) : 1;
+          for (let i=0;i<qty;i++) addToCart(itemToCartPayload(item, category.name));
+          updateCartBadges(); updateCartBar();
+          btn.textContent = "Ajouté ✅";
+          setTimeout(()=>btn.textContent = "+ Panier", 850);
+        });
+      });
+    });
+
+    updateCartBadges(); updateCartBar();
+  }
+
+  async function init(){
+    const res = await fetch("./menu.json");
+    DATA = await res.json();
+    renderChips();
+    render();
+  }
+
+  searchEl.addEventListener("input", (e)=>{ query = e.target.value || ""; render(); });
+  init();
+</script>
+</body>
+</html>
