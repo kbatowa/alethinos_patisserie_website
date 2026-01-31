@@ -1,4 +1,6 @@
 {
+  "restaurant": "Alethinos Pâtisserie & Events",
+  "currency": "XOF",
   "categories": [
     {
       "id": "encas",
@@ -60,182 +62,190 @@
     {
       "category": "encas",
       "name": "Spaghetti",
-      "desc": "Portion classique.",
-      "price": 1000
+      "desc": "",
+      "price": 1000,
+      "featured": true
     },
     {
       "category": "encas",
       "name": "Spaghetti dosé",
-      "desc": "Portion plus généreuse.",
-      "price": 1500
+      "desc": "",
+      "price": 1500,
+      "featured": true
     },
     {
       "category": "encas",
       "name": "Assiette de frites",
-      "desc": "Servie chaude.",
-      "price": 1000
+      "desc": "",
+      "price": 1000,
+      "featured": true
     },
     {
       "category": "burgers",
       "name": "Mowgli",
-      "desc": "Steak haché, laitue, tomate, oignon, sauce burger.",
-      "price": 1500
+      "desc": "Steak haché, laitue, tomate, oignon, sauce burger",
+      "price": 1500,
+      "featured": true
     },
     {
       "category": "burgers",
-      "name": "Bagheera",
-      "desc": "Steak haché, laitue, fromage, oignon, sauce burger.",
-      "price": 2000
+      "name": "Bacheera",
+      "desc": "Steak haché, laitue, fromage, oignon, sauce burger",
+      "price": 2000,
+      "featured": true
     },
     {
       "category": "burgers",
       "name": "Baloo",
-      "desc": "Double steak haché, salade, double fromage, oignon, sauce burger.",
+      "desc": "Double steak haché, salade, double fromage, oignon, sauce burger",
       "price": 3500
     },
     {
       "category": "snacks",
       "name": "Sandwich Verum",
-      "desc": "Salade, morceaux de viande de bœuf, sauce américaine, frites.",
+      "desc": "Salade, morceaux de viande de bœuf, sauce américaine, frites",
       "price": 2000
     },
     {
       "category": "snacks",
-      "name": "Cheese croissant",
-      "desc": "Mozzarella, sauce béchamel, salade, jambon de dinde.",
+      "name": "Cheese Croissant",
+      "desc": "Mozzarella, sauce béchamel, salade, jambon de dinde",
       "price": 1500
     },
     {
       "category": "snacks",
       "name": "Panini simple",
-      "desc": "Salade, viande hachée, mozzarella.",
+      "desc": "Salade, viande hachée, mozzarella",
       "price": 2000
     },
     {
       "category": "snacks",
       "name": "Panini Moed",
-      "desc": "Salade, jambon de dinde, mozzarella, emmental.",
+      "desc": "Salade, jambon de dinde, mozzarella, emmental",
       "price": 1500
     },
     {
       "category": "snacks",
       "name": "Panini Authentica",
-      "desc": "Salade, viande hachée, jambon de dinde, mozzarella, emmental.",
+      "desc": "Salade, viande hachée, jambon de dinde, mozzarella, emmental",
       "price": 2000
     },
     {
       "category": "snacks",
       "name": "Shawarma poulet",
-      "desc": "Servi chaud.",
-      "price": 1500
+      "desc": "",
+      "price": 1500,
+      "featured": true
     },
     {
       "category": "snacks",
       "name": "Shawarma viande",
-      "desc": "Servi chaud.",
+      "desc": "",
       "price": 1500
     },
     {
       "category": "snacks",
       "name": "Plat de Shawarma",
-      "desc": "Shawarma + frites + salade.",
+      "desc": "Shawarma, frites, salade",
       "price": 1500
     },
     {
       "category": "snacks",
-      "name": "Hot dog",
-      "desc": "Servi chaud.",
+      "name": "Hot Dog",
+      "desc": "",
       "price": 1200
     },
     {
       "category": "starters",
-      "name": "Samoussa légumes (5 pièces)",
-      "desc": "À partager.",
+      "name": "Samoussa aux légumes",
+      "desc": "(5 pièces)",
       "price": 1500
     },
     {
       "category": "starters",
-      "name": "Samoussa viande (5 pièces)",
-      "desc": "À partager.",
+      "name": "Samoussa à la viande",
+      "desc": "(5 pièces)",
       "price": 2000
     },
     {
       "category": "starters",
-      "name": "Samoussa poisson (5 pièces)",
-      "desc": "À partager.",
+      "name": "Samoussa au poisson",
+      "desc": "(5 pièces)",
       "price": 1500
     },
     {
       "category": "starters",
-      "name": "Nems (5 pièces)",
-      "desc": "À partager.",
+      "name": "Boulettes de viande",
+      "desc": "(5 pièces)",
+      "price": 2000
+    },
+    {
+      "category": "starters",
+      "name": "Nems",
+      "desc": "(5 pièces)",
       "price": 2500
     },
     {
       "category": "starters",
-      "name": "Boulettes de viande (5 pièces)",
-      "desc": "À partager.",
-      "price": 2000
-    },
-    {
-      "category": "starters",
-      "name": "Fish roll (5 pièces)",
-      "desc": "À partager.",
+      "name": "Fish Roll",
+      "desc": "(5 pièces)",
       "price": 2500
     },
     {
       "category": "pizza",
       "name": "Eliza",
-      "desc": "Sauce tomate, emmental, mozzarella, basilics, olives.",
+      "desc": "Sauce tomate, emmental, mozzarella, basilic, olives",
       "price": 2500
     },
     {
       "category": "pizza",
       "name": "Percy",
-      "desc": "Sauce tomate, emmental, mozzarella, saucisses, olives.",
+      "desc": "Sauce tomate, emmental, mozzarella, saucisses, olives",
       "price": 3000
     },
     {
       "category": "pizza",
       "name": "Willow",
-      "desc": "Sauce tomate, emmental, mozzarella, jambon de dinde, crème fraîche, œuf, olives.",
+      "desc": "Sauce tomate, emmental, mozzarella, jambon de dinde, crème fraîche, œuf, olives",
       "price": 4500
     },
     {
       "category": "pizza",
       "name": "Darwin",
-      "desc": "Sauce tomate, emmental, mozzarella, viande hachée, poivron, oignon, crème fraîche, olives.",
+      "desc": "Sauce tomate, emmental, mozzarella, viande hachée, poivron, oignon, crème fraîche, olives",
       "price": 4200
     },
     {
       "category": "pizza",
       "name": "Alethinos",
-      "desc": "Sauce tomate, emmental, mozzarella, crème fraîche, oignon, poivron, champignon, piment vert, jambon dinde, viande hachée, olives.",
-      "price": 6000
+      "desc": "Sauce tomate, emmental, mozzarella, crème fraîche, oignon, poivron, champignon, piment vert, jambon dinde, viande hachée, olives",
+      "price": 6000,
+      "featured": true
     },
     {
       "category": "petits-fours",
       "name": "Samoussa poisson",
-      "desc": "Unité: 400 FCFA. Commande 50+ pièces: 350 FCFA / pièce.",
+      "desc": "À partir de 50 pièces À partir de 50 pièces: 350 FCFA/pièce (lot 50).",
       "price": 400
     },
     {
       "category": "petits-fours",
       "name": "Samoussa viande",
-      "desc": "Unité: 500 FCFA. Commande 50+ pièces: 450 FCFA / pièce.",
+      "desc": "À partir de 50 pièces À partir de 50 pièces: 450 FCFA/pièce (lot 50).",
       "price": 500
     },
     {
       "category": "petits-fours",
-      "name": "Fish roll",
-      "desc": "Unité: 500 FCFA. Commande 50+ pièces: 450 FCFA / pièce.",
+      "name": "Fish Roll",
+      "desc": "À partir de 50 pièces À partir de 50 pièces: 450 FCFA/pièce (lot 50).",
       "price": 500
     },
     {
       "category": "petits-fours",
       "name": "Croissants",
       "desc": "Selon taille: 400 / 500 / 600 FCFA.",
-      "price": 400
+      "price": 400,
+      "featured": true
     },
     {
       "category": "petits-fours",
@@ -245,62 +255,80 @@
     },
     {
       "category": "petits-fours",
-      "name": "Minis pizzas",
-      "desc": "Unité: 500 FCFA. Commande 50+ pièces: 450 FCFA / pièce.",
+      "name": "Minis Pizzas",
+      "desc": "À partir de 50 pièces À partir de 50 pièces: 450 FCFA/pièce (lot 50).",
       "price": 500
     },
     {
       "category": "petits-fours",
-      "name": "Mini burger",
-      "desc": "Simple: 600 FCFA. Avec fromage: 700 FCFA. (Tarifs événement disponibles).",
+      "name": "Mini Burger simple",
+      "desc": "À partir de 50 pièces À partir de 50 pièces: 500 FCFA/pièce (lot 50).",
       "price": 600
     },
     {
       "category": "petits-fours",
-      "name": "Les nems",
-      "desc": "Unité: 400 FCFA. Commande 50+ pièces: 350 FCFA / pièce.",
+      "name": "Mini Burger fromage",
+      "desc": "À partir de 50 pièces À partir de 50 pièces: 700 FCFA/pièce (lot 50).",
+      "price": 700
+    },
+    {
+      "category": "petits-fours",
+      "name": "Nems",
+      "desc": "À partir de 50 pièces À partir de 50 pièces: 350 FCFA/pièce (lot 50).",
       "price": 400
     },
     {
       "category": "petits-fours",
       "name": "Quiche",
-      "desc": "Unité: 800 FCFA. Commande 50+ pièces: 700 FCFA / pièce.",
+      "desc": "À partir de 50 pièces À partir de 50 pièces: 700 FCFA/pièce (lot 50).",
       "price": 800
     },
     {
       "category": "petits-fours",
       "name": "Cakes",
-      "desc": "Unité: 200 FCFA. Commande 50+ pièces: 150 FCFA / pièce.",
+      "desc": "À partir de 50 pièces À partir de 50 pièces: 150 FCFA/pièce (lot 50).",
       "price": 200
     },
     {
       "category": "petits-fours",
       "name": "Sandwich",
-      "desc": "Unité: 350 FCFA.",
+      "desc": "",
       "price": 350
     },
     {
       "category": "petits-fours",
-      "name": "Les pasteis",
-      "desc": "Unité: 350 FCFA.",
+      "name": "Pastels",
+      "desc": "",
       "price": 350
     },
     {
       "category": "petits-fours",
       "name": "Tartelettes aux fruits",
-      "desc": "Unité: 800 FCFA.",
+      "desc": "",
       "price": 800
     },
     {
       "category": "petits-fours",
       "name": "Crêpes",
-      "desc": "Nature: 400 FCFA • Chocolat: 500 FCFA • Nutella: 600 FCFA.",
+      "desc": "",
       "price": 400
     },
     {
       "category": "petits-fours",
+      "name": "Crêpe au chocolat",
+      "desc": "",
+      "price": 500
+    },
+    {
+      "category": "petits-fours",
+      "name": "Crêpe Nutella",
+      "desc": "",
+      "price": 600
+    },
+    {
+      "category": "petits-fours",
       "name": "Donuts",
-      "desc": "Unité: 350 FCFA.",
+      "desc": "",
       "price": 350
     },
     {
@@ -317,165 +345,168 @@
     },
     {
       "category": "petits-fours",
-      "name": "Roulé saucisses",
-      "desc": "Unité: 400 FCFA.",
+      "name": "Roulés saucisses",
+      "desc": "",
       "price": 400
     },
     {
       "category": "petits-fours",
       "name": "Ailerons",
-      "desc": "Unité: 600 FCFA.",
+      "desc": "",
       "price": 600
     },
     {
-      "category": "desserts",
-      "name": "Box cake (petit)",
-      "desc": "Format petit.",
-      "price": 500
+      "category": "glaces",
+      "name": "Pot Vanille",
+      "desc": "",
+      "price": 1000
     },
     {
-      "category": "desserts",
-      "name": "Box cake (grand)",
-      "desc": "Format grand.",
+      "category": "glaces",
+      "name": "Pot Chocolat",
+      "desc": "",
       "price": 1000
     },
     {
       "category": "desserts",
+      "name": "Box Cake Petit",
+      "desc": "",
+      "price": 500,
+      "featured": true
+    },
+    {
+      "category": "desserts",
+      "name": "Box Cake Grand",
+      "desc": "",
+      "price": 1000
+    },
+    {
+      "category": "desserts",
+      "name": "Mousse au chocolat",
+      "desc": "",
+      "price": 1500
+    },
+    {
+      "category": "desserts",
       "name": "Part de gâteau",
-      "desc": "Une part.",
+      "desc": "",
       "price": 1000
     },
     {
       "category": "desserts",
       "name": "Cupcake",
-      "desc": "Une pièce.",
+      "desc": "",
       "price": 500
-    },
-    {
-      "category": "desserts",
-      "name": "Mousse au chocolat",
-      "desc": "Dessert gourmand.",
-      "price": 1500
-    },
-    {
-      "category": "glaces",
-      "name": "Pot vanille",
-      "desc": "Glace en pot.",
-      "price": 1000
-    },
-    {
-      "category": "glaces",
-      "name": "Pot chocolat",
-      "desc": "Glace en pot.",
-      "price": 1000
     },
     {
       "category": "boissons-chaudes",
       "name": "Café",
-      "desc": "Tasse.",
-      "price": 300
-    },
-    {
-      "category": "boissons-chaudes",
-      "name": "Thé",
-      "desc": "Tasse.",
-      "price": 300
+      "desc": "",
+      "price": 300,
+      "featured": true
     },
     {
       "category": "boissons-chaudes",
       "name": "Chocolat chaud",
-      "desc": "Tasse.",
+      "desc": "",
       "price": 1200
     },
     {
       "category": "boissons-chaudes",
-      "name": "Thé menthe / citron",
-      "desc": "Infusion.",
+      "name": "Thé",
+      "desc": "",
+      "price": 300
+    },
+    {
+      "category": "boissons-chaudes",
+      "name": "Thé Menthe Citron",
+      "desc": "",
       "price": 1000
     },
     {
-      "category": "cocktails",
-      "name": "Menthamilk",
-      "desc": "Sirop de menthe, lait.",
-      "price": 1500
-    },
-    {
-      "category": "cocktails",
-      "name": "Authentica menthe",
-      "desc": "Sirop de menthe, sprite.",
-      "price": 1500
-    },
-    {
-      "category": "cocktails",
-      "name": "Gingermilk",
-      "desc": "Lait gingembre.",
-      "price": 1500
-    },
-    {
-      "category": "cocktails",
-      "name": "Authentica grenadine",
-      "desc": "Sirop de grenadine, sprite.",
-      "price": 2000
-    },
-    {
-      "category": "cocktails",
-      "name": "Combo",
-      "desc": "Orange, ananas, sirop de grenadine.",
-      "price": 2000
-    },
-    {
       "category": "boissons-soft",
-      "name": "Eau Voltic 0,5 L",
-      "desc": "Bouteille 0,5 litre.",
+      "name": "Eau Voltic",
+      "desc": "0.5 L",
       "price": 300
     },
     {
       "category": "boissons-soft",
-      "name": "Eau Voltic 1,5 L",
-      "desc": "Bouteille 1,5 litre.",
+      "name": "Eau Voltic",
+      "desc": "1.5 L",
       "price": 900
     },
     {
       "category": "boissons-soft",
       "name": "Malta",
-      "desc": "Bouteille.",
+      "desc": "",
       "price": 500
     },
     {
       "category": "boissons-soft",
-      "name": "Cocktail (soft)",
-      "desc": "Boisson soft.",
+      "name": "Cocktail",
+      "desc": "",
       "price": 500
     },
     {
       "category": "boissons-soft",
-      "name": "Coca-Cola",
-      "desc": "Bouteille.",
+      "name": "Coca Cola",
+      "desc": "",
       "price": 500
     },
     {
       "category": "boissons-soft",
       "name": "Youzou",
-      "desc": "Bouteille.",
+      "desc": "",
       "price": 500
     },
     {
       "category": "boissons-soft",
       "name": "Bière Beaufort",
-      "desc": "Bière.",
+      "desc": "",
       "price": 600
     },
     {
       "category": "boissons-soft",
-      "name": "Sirop (grenadine / menthe)",
-      "desc": "Sirop au choix.",
+      "name": "Sirop Grenadine / Menthe",
+      "desc": "",
       "price": 500
     },
     {
       "category": "boissons-soft",
       "name": "Red Bull",
-      "desc": "Canette.",
+      "desc": "",
       "price": 1500
+    },
+    {
+      "category": "cocktails",
+      "name": "Menthamilk",
+      "desc": "Sirop de menthe, lait",
+      "price": 1500,
+      "featured": true
+    },
+    {
+      "category": "cocktails",
+      "name": "Authentica Menthe",
+      "desc": "Sirop de menthe, sprite",
+      "price": 1500
+    },
+    {
+      "category": "cocktails",
+      "name": "Gingermilk",
+      "desc": "Lait gingembre",
+      "price": 1500
+    },
+    {
+      "category": "cocktails",
+      "name": "Authentica Grenadine",
+      "desc": "Sirop de grenadine, sprite",
+      "price": 2000
+    },
+    {
+      "category": "cocktails",
+      "name": "Combo",
+      "desc": "Orange, ananas, sirop de grenadine",
+      "price": 2000
     }
   ]
 }

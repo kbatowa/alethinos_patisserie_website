@@ -85,7 +85,9 @@
 
   <script>
     const WA = "22870398573";
-    function goWA(msg){ location.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg); }
+    function goWA(msg){ const __waUrl = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg);
+        const __w = window.open(__waUrl, "_blank", "noopener,noreferrer");
+        if(!__w){ window.location.href = __waUrl; } }
 
     const devis = "Bonjour Alethinos !\n\nJe veux un devis.\n\n• Nom : [VOTRE NOM]\n• Date : [DATE]\n• Heure : [HEURE]\n• Type : [ANNIVERSAIRE / RÉUNION / ENTREPRISE / AUTRE]\n• Nombre de personnes : [NOMBRE]\n• Budget : [BUDGET]\n\nBesoin : [plateaux / gâteau / cocktails / déco...]\n\nTéléphone : [VOTRE NUMÉRO]\nMerci !";
     document.getElementById("waDevis").onclick = ()=>goWA(devis);

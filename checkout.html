@@ -153,7 +153,9 @@
       msg += "\nTotal: " + amount + " FCFA\n";
       msg += "Paiement: Mobile Money (USSD). Référence transaction / capture ci-joint.";
 
-      window.location.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg);
+      const __waUrl = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg);
+        const __w = window.open(__waUrl, "_blank", "noopener,noreferrer");
+        if(!__w){ window.location.href = __waUrl; }
     }
 
     document.getElementById("tmoneyBtn").addEventListener("click", ()=>pay("tmoney"));

@@ -101,7 +101,9 @@
 `• Date souhaitée : ${date}\n\n` +
 `Message :\n${msg}\n\nMerci !`;
 
-      location.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(text);
+      const __waUrl = "https://wa.me/" + WA + "?text=" + encodeURIComponent(text);
+        const __w = window.open(__waUrl, "_blank", "noopener,noreferrer");
+        if(!__w){ window.location.href = __waUrl; }
     });
   </script>
 </body>

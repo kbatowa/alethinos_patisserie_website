@@ -129,7 +129,9 @@
 "Merci !";
 
       document.getElementById("laterBtn").addEventListener("click", function(){
-        location.href = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(laterTemplate);
+        const __waUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(laterTemplate);
+        const __w = window.open(__waUrl, "_blank", "noopener,noreferrer");
+        if(!__w){ window.location.href = __waUrl; }
       });
 
       const form = document.getElementById("orderNowForm");
@@ -154,7 +156,9 @@ order + "\n\n" +
 (notes || "—") + "\n\n" +
 "Merci !";
 
-        location.href = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(msg);
+        const __waUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(msg);
+        const __w = window.open(__waUrl, "_blank", "noopener,noreferrer");
+        if(!__w){ window.location.href = __waUrl; }
       });
     });
   </script>

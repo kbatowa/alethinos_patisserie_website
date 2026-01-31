@@ -61,7 +61,10 @@
 <script type="module">
   const chipsEl = document.getElementById("chips");
   const groupChipsEl = document.getElementById("groupChips");
-  const listEl = document.getElementById("list");
+    // Menu container
+    // NOTE: the markup uses id="menu"; previously the JS looked for id="list",
+    // which returned null and stopped rendering (blank page).
+    const listEl = document.getElementById("menu");
   const searchEl = document.getElementById("search");
 
   const GROUPS = [
@@ -110,20 +113,35 @@
     return (s||"").toLowerCase().trim().replace(/\s+/g, "-").replace(/[^\w\-]/g, "");
   }
 
+
+  // Normalise texte pour recherche (ignore accents/ponctuation)
+  function normText(s){
+    return (s||"")
+      .toString()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9\s]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  const CAT_TITLE = {}; // rempli après chargement
+
+
   
   const FEATURED_SLUGS = new Set([
-    "spaghetti",
-    "spaghetti-dose",
+    "alethinos",
     "assiette-de-frites",
-    "le-burger-batowa",
-    "pizza-alethinos",
-    "shawarma-poulet",
-    "cappuccino",
-    "cafe-simple",
-    "menthamilk",
+    "bacheera",
     "box-cake-petit",
-    "part-de-gateau",
-    "jus-de-fruits",
+    "caf",
+    "croissants",
+    "menthamilk",
+    "mowgli",
+    "shawarma-poulet",
+    "spaghetti",
+    "spaghetti-dos"
   ]);
 
 function formatFCFA(n){
@@ -219,16 +237,22 @@ function formatFCFA(n){
     // group filter
     base = base.filter(it => itemAllowedByGroup(activeGroup, it));
 
-    // search
-    const q = query.trim().toLowerCase();
+    // search (accent-insensible, inclut catégorie + prix)
+    const q = normText(query);
     if (q){
-      base = base.filter(it => (
-        (it.name||"").toLowerCase().includes(q) ||
-        (it.desc||"").toLowerCase().includes(q)
-      ));
+      base = base.filter(it => {
+        const blob = normText([
+          it.name || "",
+          it.desc || "",
+          CAT_TITLE[it.category] || "",
+          String(it.price ?? ""),
+          String(it.bulk ?? ""),
+          String(it.unit ?? ""),
+        ].join(" "));
+        return blob.includes(q);
+      });
     }
-
-    if (!base.length){
+if (!base.length){
       listEl.innerHTML = `<div class="empty">Aucun résultat. Essaie un autre mot ou change le filtre.</div>`;
       return;
     }
